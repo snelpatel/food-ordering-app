@@ -39,17 +39,82 @@ const customStyles = {
     );
   }
 
+  
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired
+}
+
   class Header extends Component {
     constructor() {
       super();
       this.state = {
-        
+        loginInvalidContactNo: "",
+        username: "",
+        password: "",
+        loginErrorMsg: "",
+        usernameRequired: "dispNone",
+        passwordRequired: "dispNone",
+        loginError: "dispNone",
+        loginErrCode: "",
+        firstname: "",
+        lastname: "",
+        loggedIn: sessionStorage.getItem('access-token') == null ? false : true,
+        snackBarText: "",
+      
       }
     }
   
     
   
     componentDidMount() {
+    }
+
+    //Login functionality
+    loginClickHandler = () => {
+      //Invalidate error messages
+      this.setState({ loginInvalidContactNo: "" })
+      //Check blank inputs
+      this.state.username === "" ? this.setState({ usernameRequired: "dispBlock" }) : this.setState({ usernameRequired: "dispNone" });
+      this.state.password === "" ? this.setState({ passwordRequired: "dispBlock" }) : this.setState({ passwordRequired: "dispNone" });
+      this.state.loginErrorMsg === "" ? this.setState({ loginError: "dispBlock" }) : this.setState({ loginError: "dispNone" });
+      //Returns if username and password fields are null
+      if (this.state.username === "" || this.state.password === "") { return }
+      let tempContactNo = this.state.username;
+      //Contact number should be 10 digits in length
+      var reg = new RegExp('^[0-9]+$');
+      if (tempContactNo.length !== 10 || !reg.test(tempContactNo)) {
+        this.setState({ loginInvalidContactNo: "Invalid Contact" })
+        return;
+      }
+  
+      let that = this;
+      let dataLogin = null
+      let xhrLogin = new XMLHttpRequest();
+      xhrLogin.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+          let loginResponse = JSON.parse(xhrLogin.response);
+          if (loginResponse.code === 'ATH-001' || loginResponse.code === 'ATH-002') {
+            that.setState({ loginError: "dispBlock" });
+            that.setState({ loginErrCode: loginResponse.code });
+            that.setState({ loginErrorMsg: loginResponse.message });
+          } else {
+            sessionStorage.setItem('uuid', JSON.parse(this.responseText).id);
+            sessionStorage.setItem('access-token', xhrLogin.getResponseHeader('access-token'));
+            sessionStorage.setItem('firstName', JSON.parse(this.responseText).first_name);
+            that.setState({ firstname: JSON.parse(this.responseText).first_name });
+            that.setState({ loggedIn: true });
+            that.closeModalHandler();
+            that.setState({ snackBarText: "Logged in successfully!" });
+            that.openMessageHandlerPostLogin();
+          }
+        }
+      })
+      xhrLogin.open("POST", this.props.baseUrl + "customer/login");
+      xhrLogin.setRequestHeader("authorization", "Basic " + window.btoa(this.state.username + ":" + this.state.password));
+      xhrLogin.setRequestHeader("Content-Type", "application/json");
+      xhrLogin.setRequestHeader("Cache-Control", "no-cache");
+      xhrLogin.setRequestHeader("Access-Control-Allow-Origin", "*");
+      xhrLogin.send(dataLogin);
     }
   
     render() {
