@@ -15,14 +15,19 @@
     flex-direction: column;
     align-items: center;
     }
-    
+    .menuDrop{
+      margin-top: 52px !important;
+    }
   }
   
+  .menuDrop{
+    margin-top: 40px;
+  }
   
   .header-logo-container, .header-search-container, .header-upload-btn-container, .header-profile-btn-container {
     align-self: center;
   }
-  
+
   .logo {
     color: #fff;
     font-size: 18px;
@@ -44,8 +49,6 @@
     align-self: center;
   }
   
-  
-  
   .dispNone{
     display:none;
   }
@@ -54,3 +57,42 @@
     display: block;
   }
   
+  .image-preview-container {
+    padding: 15px 0;
+    text-align: center;
+  }
+  
+  .image-preview {
+    max-height: 250px;
+    max-width: 250px;
+  }
+  
+  .user-profile-drop-down {
+    position: absolute;
+    right: 16px;
+    background: #dfdfdf;
+    padding: 16px;
+    border-radius: 6px;
+    margin-top: 3px;
+    display: block;
+  }
+  
+  .my-account-dropdown-menu-item, .logout-dropdown-menu-item {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+  }  
+
+  .red
+  {
+    color: red;
+  }
+
+  .MuiInputBase-root.MuiInput-root.MuiInput-underline:after{
+    border-bottom: white !important;
+    width:8px !important;
+  }
+    
+  .tabs{
+    margin-bottom: 20px;
+  }
