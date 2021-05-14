@@ -71,8 +71,38 @@ TabContainer.propTypes = {
         registrationSuccess: false,
         signupError: "dispNone",
         signUpErrorMsg: "",
-        signUpErrCode: ""
+        signUpErrCode: "",
+        open: false,
+        anchorEl: null,
+        snackBarOpen: false,
+        menuIsOpen: false,
+        modalIsOpen: false,
+        showUserProfileDropDown: false,
+        value: 0
       }
+    }
+
+    //Transferring signup values to its respective states
+    inputUsernameChangeHandler = (e) => {
+      this.setState({ username: e.target.value })
+    }
+    inputPasswordChangeHandler = (e) => {
+      this.setState({ password: e.target.value })
+    }
+    inputEmailChangeHandler = (e) => {
+      this.setState({ email: e.target.value })
+    }
+    inputFirstnameChangeHandler = (e) => {
+      this.setState({ firstname: e.target.value })
+    }
+    inputLastnameChangeHandler = (e) => {
+      this.setState({ lastname: e.target.value })
+    }
+    inputMobileChangeHandler = (e) => {
+      this.setState({ mobile: e.target.value })
+    }
+    inputPasswordRegChangeHandler = (e) => {
+      this.setState({ passwordReg: e.target.value })
     }
   
     
