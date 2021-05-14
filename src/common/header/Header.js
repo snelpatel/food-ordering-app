@@ -233,6 +233,12 @@ TabContainer.propTypes = {
       this.setState({ passwordRegRequired: "dispNone" });
       this.setState({ loginErrorMsg: "" });
     }
+
+    //Close modal functinality & snack bar open message
+    closeModalHandler = () => {
+      this.setState({ modalIsOpen: false });
+      this.setState({ snackBarOpen: true });
+    }
   
     render() {
       const { classes } = this.props;
