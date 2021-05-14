@@ -245,6 +245,11 @@ TabContainer.propTypes = {
       this.setState({ modalIsOpen: false });
       this.setState({ snackBarOpen: false });
     }
+
+    //Login & Signup tab toggle
+    tabChangeHandler = (event, value) => {
+      this.setState({ value });
+    }
   
     render() {
       const { classes } = this.props;
