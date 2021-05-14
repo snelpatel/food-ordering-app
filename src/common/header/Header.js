@@ -3,6 +3,24 @@ import "./Header.css";
 import Fastfood from '@material-ui/icons/Fastfood';
 import SearchIcon from "@material-ui/icons/Search";
 import { withStyles } from '@material-ui/core/styles';
+import Modal from 'react-modal';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from "@material-ui/core/Input";
+import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MenuItem from '@material-ui/core/MenuItem';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Menu from '@material-ui/core/Menu';
+import { Link } from 'react-router-dom';
+
 const customStyles = {
     content: {
       top: '50%',
