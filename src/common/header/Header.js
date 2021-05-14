@@ -206,6 +206,33 @@ TabContainer.propTypes = {
       xhrSignup.setRequestHeader("Access-Control-Allow-Origin", "*");
       xhrSignup.send(JSON.stringify(dataSignup));
     }
+
+    //Open modal functionality
+    openModalHandler = () => {
+      //invalidating all states value while modal is opened
+      this.setState({ modalIsOpen: true });
+      this.setState({ value: 0 });
+      this.setState({ email: "" });
+      this.setState({ firstname: "" });
+      this.setState({ lastname: "" });
+      this.setState({ mobile: "" });
+      this.setState({ signUpErrorMsg: "" });
+      this.setState({ signUpErrCode: "" });
+      this.setState({ passwordReg: "" });
+      this.setState({ loginInvalidContactNo: "" });
+      this.setState({ loginErrCode: "" });
+      this.setState({ loginErrorMsg: "" });
+      this.setState({ usernameRequired: "dispNone" });
+      this.setState({ passwordRequired: "dispNone" });
+      this.setState({ loginError: "dispNone" });
+      this.setState({ signupError: "dispNone" });
+      this.setState({ emailRequired: "dispNone" });
+      this.setState({ firstnameRequired: "dispNone" });
+      this.setState({ lastnameRequired: "dispNone" });
+      this.setState({ mobileRequired: "dispNone" });
+      this.setState({ passwordRegRequired: "dispNone" });
+      this.setState({ loginErrorMsg: "" });
+    }
   
     render() {
       const { classes } = this.props;
