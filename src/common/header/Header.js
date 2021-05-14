@@ -250,6 +250,13 @@ TabContainer.propTypes = {
     tabChangeHandler = (event, value) => {
       this.setState({ value });
     }
+
+    //Open snackbar and navigate to login tab after signup
+    openMessageHandler = () => {
+      this.setState({ snackBarOpen: true });
+      this.setState({ modalIsOpen: true });
+      this.setState({ value: 0 });
+    }
   
     render() {
       const { classes } = this.props;
