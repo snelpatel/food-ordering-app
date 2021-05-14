@@ -60,7 +60,18 @@ TabContainer.propTypes = {
         lastname: "",
         loggedIn: sessionStorage.getItem('access-token') == null ? false : true,
         snackBarText: "",
-      
+        email: "",
+        mobile: "",
+        passwordReg: "",
+        emailRequired: "dispNone",
+        firstnameRequired: "dispNone",
+        lastnameRequired: "dispNone",
+        mobileRequired: "dispNone",
+        passwordRegRequired: "dispNone",
+        registrationSuccess: false,
+        signupError: "dispNone",
+        signUpErrorMsg: "",
+        signUpErrCode: ""
       }
     }
   
@@ -115,6 +126,55 @@ TabContainer.propTypes = {
       xhrLogin.setRequestHeader("Cache-Control", "no-cache");
       xhrLogin.setRequestHeader("Access-Control-Allow-Origin", "*");
       xhrLogin.send(dataLogin);
+    }
+
+    //Signup functionality
+    signUpClickHandler = () => {
+      //invalidate states
+      this.setState({ signUpErrorMsg: "" });
+      this.setState({ signUpErrCode: "" });
+      //Empty fields check
+      this.state.email === "" ? this.setState({ emailRequired: "dispBlock" }) : this.setState({ emailRequired: "dispNone" });
+      this.state.firstname === "" ? this.setState({ firstnameRequired: "dispBlock" }) : this.setState({ firstnameRequired: "dispNone" });
+      this.state.mobile === "" ? this.setState({ mobileRequired: "dispBlock" }) : this.setState({ mobileRequired: "dispNone" });
+      this.state.passwordReg === "" ? this.setState({ passwordRegRequired: "dispBlock" }) : this.setState({ passwordRegRequired: "dispNone" });
+      if (this.state.email === "" || this.state.firstname === "" || this.state.mobile === "" || this.state.passwordReg === "") { return; }
+  
+      let that = this;
+      let dataSignup = {
+        'first_name': this.state.firstname,
+        'last_name': this.state.lastname,
+        'email_address': this.state.email,
+        'password': this.state.passwordReg,
+        'contact_number': this.state.mobile,
+      };
+  
+      let xhrSignup = new XMLHttpRequest();
+      xhrSignup.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+          let signupResponse = JSON.parse(this.response);
+          if (signupResponse.code === 'SGR-001'
+            || signupResponse.code === 'SGR-002'
+            || signupResponse.code === 'SGR-003'
+            || signupResponse.code === 'SGR-004') {
+            that.setState({ signupError: "dispBlock" });
+  
+            that.setState({ signUpErrCode: signupResponse.code });
+            that.setState({ signUpErrorMsg: signupResponse.message });
+  
+          } else {
+            that.setState({ registrationSuccess: true });
+            that.setState({ snackBarText: "Registered successfully! Please login now!" });
+            that.openMessageHandler();
+          }
+        }
+      })
+  
+      xhrSignup.open("POST", this.props.baseUrl + "customer/signup");
+      xhrSignup.setRequestHeader("Content-Type", "application/json");
+      xhrSignup.setRequestHeader("Cache-Control", "no-cache");
+      xhrSignup.setRequestHeader("Access-Control-Allow-Origin", "*");
+      xhrSignup.send(JSON.stringify(dataSignup));
     }
   
     render() {
