@@ -257,6 +257,23 @@ TabContainer.propTypes = {
       this.setState({ modalIsOpen: true });
       this.setState({ value: 0 });
     }
+
+    //Open snackbar and close modal after login
+    openMessageHandlerPostLogin = () => {
+      this.setState({ snackBarOpen: true });
+      this.setState({ modalIsOpen: false });
+      this.setState({ value: 0 });
+    }
+
+    //Menu for profile & logout link
+    openMenuHandler = (event) => {
+      this.setState({
+        menuIsOpen: true,
+      });
+      this.setState({
+        anchorEl: event.currentTarget,
+      });
+    }
   
     render() {
       const { classes } = this.props;
