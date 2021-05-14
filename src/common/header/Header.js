@@ -239,6 +239,12 @@ TabContainer.propTypes = {
       this.setState({ modalIsOpen: false });
       this.setState({ snackBarOpen: true });
     }
+
+    //Close modal when clicked anyway
+    closeModalHandlerClickAway = () => {
+      this.setState({ modalIsOpen: false });
+      this.setState({ snackBarOpen: false });
+    }
   
     render() {
       const { classes } = this.props;
