@@ -274,6 +274,36 @@ TabContainer.propTypes = {
         anchorEl: event.currentTarget,
       });
     }
+
+    //Closing the menu handler
+    closeMenuHandler = () => {
+      this.setState({
+        menuIsOpen: false
+      });
+    }
+
+    //Dropdown menu handler
+    handleClose = () => {
+      this.setState({
+        open: false,
+        showUserProfileDropDown: !this.state.showUserProfileDropDown
+      })
+    }
+
+    handleSnackBarClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      this.setState({ snackBarOpen: false })
+    }
+
+    //logout handler
+    logoutClickHandler = () => {
+      sessionStorage.clear();
+      this.props.history.push({
+        pathname: "/"
+      });
+    };
   
     render() {
       const { classes } = this.props;
