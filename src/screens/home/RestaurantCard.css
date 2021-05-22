@@ -3,13 +3,18 @@
     color: white;
     padding: 4px 4px 4px 5px;
     white-space: nowrap;
+    width: 37%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
 }
 
 .rating-main-contnr{
     display: flex;
     justify-content:space-between;
     flex-direction: row;
-    padding: 3%;
+    padding: 5%;
+    align-items: center;
 }
 
 .avg-price{
