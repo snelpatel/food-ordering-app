@@ -1,23 +1,88 @@
-@media only screen and (max-width: 768px){
+@media screen and (max-width: 767px){
     .restaurant-information {
-        width: 100%;
-        flex-wrap: wrap;
+        width: 100% !important;
+        flex-wrap: wrap !important;
     }
+
     .restaurant-image {
-        width: 100%;
+        width: 100% !important;
+        padding: 5% !important;
+        padding-left: 20% !important;
+        padding-right: 20% !important;
     }
+
     .restaurant-details {
-        width: 100%;
-        text-align: center
+        width: 100% !important;
+        text-align: center !important;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        padding-right: 5%;
+        padding-left: 5%;
     }
+
     .menu-cart-section {
-        flex-wrap: wrap;
+        flex-wrap: wrap !important;
     }
+
     .menu {
-        width: 100%;
+        width: 100% !important;
     }
+
     .cart {
-        width: 100%;
+        width: 100% !important;
+    }
+
+    .totalAmountText {
+        width: 70% !important;
+    }
+
+    .totalAmountValue {
+        width: 30% !important;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .restaurant-information {
+        width: 100% !important;
+        flex-wrap: wrap !important;
+    }
+
+    .restaurant-image {
+        width: 100% !important;
+        padding: 5% !important;
+        padding-left: 20% !important;
+        padding-right: 20% !important;
+    }
+
+    .restaurant-details {
+        width: 100% !important;
+        text-align: center !important;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+    .menu-cart-section {
+        flex-wrap: wrap !important;
+    }
+
+    .menu {
+        width: 100% !important;
+    }
+    
+    .cart {
+        width: 100% !important;
+    }
+
+    .totalAmountText {
+        width: 70% !important;
+    }
+
+    .totalAmountValue {
+        width: 30% !important;
+        justify-content: center;
     }
 }
 
@@ -34,8 +99,11 @@
 }
 
 .restaurant-details {
-    padding: 2%;
-    width: 69%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    padding-left: 4%;
+    width: 75%;
 }
 
 .restaurant-image {
@@ -43,7 +111,7 @@
     justify-content: center;
     align-items: center;
     padding: 1%;
-    width: 31%;
+    width: 25%;
 }
 
 .menu-cart-section {
@@ -54,8 +122,18 @@
 
 .menu {
     width: 50%;
+    padding-right: 5%;
+    padding-left: 3%;
+    padding-top: 2%;
 }
 
 .cart {
     width: 50%;
+    padding-right: 5%;
+    padding-left: 3%;
+    padding-top: 2%;
+}
+
+.checkoutButton {
+    padding: 3%;
 }

@@ -14,7 +14,7 @@ const RestaurantCard = function(props){
 
     return (
 		<div className="cardContainer" onClick={() => {let detailsPageUrl = '/restaurant/'+ props.resId; return props.history.push(detailsPageUrl)}} key={index}>
-			<Card style={{width:"95%",height:"95%"}} className={classes.resCard} key={index}>			
+			<Card style={{width:"95%",height:"100%"}} className={classes.resCard} key={index}>			
 					<CardMedia
 						component="img"
 						alt={props.resName}
@@ -25,12 +25,12 @@ const RestaurantCard = function(props){
 						<Typography gutterBottom variant="h5" component="h4">
 							{props.resName}
 						</Typography>
-						<div><br/>
+						<div><br />
 						<Typography style={{height:"25px",display:"block"}}variant="subtitle1" >
 							{props.resFoodCategories}
 						</Typography>
-						</div>
 						<br /><br />
+						</div>
 					</CardContent>		
 					<div className="rating-main-contnr">
 								<div className="rating-bg-color">

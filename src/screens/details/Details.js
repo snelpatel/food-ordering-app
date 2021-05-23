@@ -190,21 +190,21 @@ class Details extends Component {
           </div>
           <div className="restaurant-details">
             <div>
-              <Typography variant="h4" gutterBottom> {this.state.restaurant_name} </Typography> <br />
-              <Typography variant="h5" gutterBottom> {this.state.locality} </Typography> <br />
+              <Typography variant="h4" gutterBottom> {this.state.restaurant_name} </Typography> 
+              <Typography variant="h5" gutterBottom> {this.state.locality} </Typography> 
               <Typography variant="body1" gutterBottom> {this.state.categories
                 && Array.isArray(this.state.categories)
                 && this.state.categories.length > 0
                 && this.state.categories.map((el) => el.category_name).join(", ")} </Typography>
             </div>
-            <div style={{ float: 'left', display: "flex", flexDirection: "row", width: "100%", paddingTop: "5%" }}>
+            <div style={{ float: 'left', display: "flex", flexDirection: "row", width: "100%", paddingTop: "1%" }}>
               <div style={{ width: "100%" }}>
                 <i className="fa fa-star" aria-hidden="true"> {this.state.customer_rating} </i> <br />
-                <Typography variant="caption" gutterBottom> AVERAGE RATING BY <br /> <span style={{ fontWeight: 'bold' }}> {this.state.number_customers_rated} </span> USERS </Typography>
+                <Typography variant="caption" gutterBottom style={{ color: "gray" }}> AVERAGE RATING BY <br /> <span style={{ fontWeight: 'bold' }}> {this.state.number_customers_rated} </span> USERS </Typography>
               </div>
               <div style={{ width: "100%" }}>
                 <i className="fa fa-inr" aria-hidden="true"> {this.state.average_price} </i> <br />
-                <Typography variant="caption" gutterBottom> AVERAGE COST FOR <br /> TWO PEOPLE </Typography>
+                <Typography variant="caption" gutterBottom style={{ color: "gray" }}> AVERAGE COST FOR <br /> TWO PEOPLE </Typography>
               </div>
             </div>
           </div>
@@ -212,7 +212,7 @@ class Details extends Component {
         <div className="menu-cart-section">
           {/* menu-items section */}
           <div className='menu'>
-            <div style={{ padding: '3%' }}>
+            <div>
               {this.state.categories.map(categoryItem =>
                 <div key={categoryItem.id}>
                   <CategoryItem item={categoryItem} this={this} />
@@ -236,12 +236,12 @@ class Details extends Component {
                     </div>
                   )}
                   <div style={{ display: "inline-block", width: "100%", paddingTop: "3%" }}>
-                    <div style={{ float: "left" }}><Typography variant="body1" gutterBottom style={{ fontWeight: 'bold' }}> TOTAL AMOUNT </Typography></div>
-                    <div style={{ float: "right", width: "14%" }}><i className="fa fa-inr" aria-hidden="true"> </i> {this.state.cartTotalPrice.toFixed(2)} </div>
+                    <div className="totalAmountText" style={{ float: "left" }}><Typography variant="body1" gutterBottom style={{ fontWeight: 'bold' }}> TOTAL AMOUNT </Typography></div>
+                    <div className="totalAmountValue" style={{ float: "right", width: "14%", fontWeight: "bold"}}><i className="fa fa-inr" aria-hidden="true"> </i> {this.state.cartTotalPrice.toFixed(2)} </div>
                   </div>
                 </CardContent>
                 <CardActions>
-                  <div style={{ width: "100%" }}>
+                  <div className="checkoutButton" style={{ width: "100%" }}>
                     <Button style={{ width: "100%" }} variant="contained" color="primary" onClick={this.checkoutHandler}> CHECKOUT </Button>
                   </div>
                 </CardActions>
@@ -286,16 +286,16 @@ function CartItem(props) {
     && props.item.item.item_type.toLowerCase() === "non_veg" ? "red" : "green";
   return (
     <div style={{ display: "flex", flexDirection: "row", width: "100%", padding: "1%" }}>
-      <div style={{ width: "10%", display: "flex", alignItems: "center", color: color }}><i className="fa fa-stop-circle-o" aria-hidden="true"></i></div>
-      <div style={{ width: "40%", display: "flex", alignItems: "center", textTransform: "capitalize" }}><span style={{ color: "grey" }}> {cartItem.item.item_name} </span></div>
-      <div style={{ width: "5%", display: "flex", alignItems: "center" }}>
+      <div style={{ width: "10%", display: "flex", justifyContent: "center", alignItems: "center", color: color }}><i className="fa fa-stop-circle-o" aria-hidden="true"></i></div>
+      <div style={{ width: "45%", display: "flex", alignItems: "center", textTransform: "capitalize" }}><span style={{ color: "grey" }}> {cartItem.item.item_name} </span></div>
+      <div style={{ width: "5%", display: "flex", justifyContent: "center", alignItems: "center" }}>
         <i onClick={(e) => props.this.removeItemFromCartHandler(cartItem)} className="cartButton fa fa-minus" aria-hidden="true" ></i>
       </div>
-      <div style={{ width: "5%", display: "flex", alignItems: "center" }}> {cartItem.quantity} </div>
-      <div style={{ width: "25%", display: "flex", alignItems: "center" }}>
+      <div style={{ width: "5%", display: "flex", justifyContent: "center", alignItems: "center" }}> {cartItem.quantity} </div>
+      <div style={{ width: "5%", display: "flex", justifyContent: "center", alignItems: "center" }}>
         <i onClick={(e) => props.this.addItemFromCartHandler(cartItem)} className="cartButton fa fa-plus" aria-hidden="true" ></i>
       </div>
-      <div style={{ display: "flex", alignItems: "center" }}><i className="fa fa-inr" aria-hidden="true"><span style={{ color: "grey" }}> {cartItem.item.price.toFixed(2)} </span></i></div>
+      <div style={{ width: "30%", display: "flex", justifyContent: "center", alignItems: "center" }}><i className="fa fa-inr" aria-hidden="true"><span style={{ color: "grey" }}> {cartItem.item.price.toFixed(2)} </span></i></div>
     </div>
   )
 }
