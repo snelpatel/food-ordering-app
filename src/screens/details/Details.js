@@ -77,14 +77,16 @@ class Details extends Component {
       console.log('error getting data', error);
     });
   };
-  //handle sanckbar
+
+  // Handle snackbar
   handleSnackBar = (message) => {
     this.setState({
       snackbarOpen: !this.state.snackbarOpen,
       snackbarMessage: message,
     });
   }
-  //handle checkout 
+
+  // Handle Checkout
   checkoutHandler = () => {
     if (this.state.cartItems === 0) {
       this.handleSnackBar("Please add an item to your cart!");
@@ -111,7 +113,7 @@ class Details extends Component {
     }
   }
 
-  //remove the item from cart by clicking on minus
+  // Remove the item from the cart by clicking on minus button
   removeItemFromCartHandler = (cartItem) => {
     let cartItemsList = this.state.cartItemsList;
     let index = cartItemsList.indexOf(cartItem);
@@ -129,7 +131,7 @@ class Details extends Component {
     })
   }
 
-  //add item form plus sign of cart handler
+  // Add item to the cart
   addItemFromCartHandler = (cartItem) => {
     this.handleSnackBar("Item quantity increased by 1!");
     let cartItemsList = this.state.cartItemsList;
@@ -142,7 +144,7 @@ class Details extends Component {
     });
   }
 
-  //Add item from menu.categories
+  // Increment Item in cart
   addItemHandler = (item) => {
     this.handleSnackBar("Item added to cart!");
     let cartItemsList = this.state.cartItemsList;
@@ -175,7 +177,7 @@ class Details extends Component {
         <div >
           <Header showSearch={false} />
         </div>
-        {/* restaurant information */}
+        {/* Restaurant Information */}
         <div className="restaurant-information">
           <div className="restaurant-image">
             <div>
@@ -208,7 +210,7 @@ class Details extends Component {
           </div>
         </div>
         <div className="menu-cart-section">
-          {/* menu-items section */}
+          {/* Menu-Items */}
           <div className='menu'>
             <div>
               {this.state.categories.map(categoryItem =>
@@ -218,7 +220,7 @@ class Details extends Component {
               )}
             </div>
           </div>
-          {/* cart section */}
+          {/* Cart Section*/}
           <div className="cart">
             <div style={{ padding: '3%' }}>
               <Card className={classes.card}>
@@ -227,7 +229,7 @@ class Details extends Component {
                     <div className = "cartDiv1" style={{ float: "left"}}><Badge badgeContent={this.state.cartItems === null ? 0 : this.state.cartItems} color="primary"><ShoppingCart /></Badge></div>
                     <div className = "cartDiv2" style={{ float: "right"}}><Typography variant="h5" gutterBottom style={{ fontWeight: 'bold' }}> My Cart </Typography></div>
                   </div>
-                  {/* items in cart */}
+                  {/* Item Section */}
                   {this.state.cartItemsList.map(cartItem =>
                     <div key={cartItem.item.id}>
                       <CartItem item={cartItem} this={this} />
@@ -276,7 +278,7 @@ class Details extends Component {
   }
 }
 
-//create the div for the cart item
+// Div for Cart Item
 function CartItem(props) {
   const cartItem = props.item;
   const color = props.item
@@ -298,7 +300,7 @@ function CartItem(props) {
   )
 }
 
-//render the category item
+// Div for Category Item
 function CategoryItem(props) {
   return (
     <div style={{ padding: "3%" }}>
