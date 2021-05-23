@@ -40,6 +40,14 @@
         width: 30% !important;
         justify-content: center;
     }
+
+    .cartDiv1 {
+        width: 14% !important;
+    }
+    
+    .cartDiv2 {
+        width: 86% !important;
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -71,7 +79,7 @@
     .menu {
         width: 100% !important;
     }
-    
+
     .cart {
         width: 100% !important;
     }
@@ -83,6 +91,14 @@
     .totalAmountValue {
         width: 30% !important;
         justify-content: center;
+    }
+
+    .cartDiv1 {
+        width: 14% !important;
+    }
+    
+    .cartDiv2 {
+        width: 86% !important;
     }
 }
 
@@ -136,4 +152,12 @@
 
 .checkoutButton {
     padding: 3%;
+}
+
+.cartDiv1 {
+    width: 10%;
+}
+
+.cartDiv2 {
+    width: 90%;
 }

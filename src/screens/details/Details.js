@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './Details.css';
 import Header from '../../common/header/Header';
-import * as Utils from "../../common/Utils";
-import * as Constants from "../../common/Constants";
 import '../../../src/assets/font-awesome-4.7.0/css/font-awesome.css';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -226,8 +224,8 @@ class Details extends Component {
               <Card className={classes.card}>
                 <CardContent>
                   <div style={{ display: "inline-block", width: "100%" }}>
-                    <div style={{ float: "left", width: "10%" }}><Badge badgeContent={this.state.cartItems === null ? 0 : this.state.cartItems} color="primary"><ShoppingCart /></Badge></div>
-                    <div style={{ float: "right", width: "90%" }}><Typography variant="h5" gutterBottom style={{ fontWeight: 'bold' }}> My Cart </Typography></div>
+                    <div className = "cartDiv1" style={{ float: "left"}}><Badge badgeContent={this.state.cartItems === null ? 0 : this.state.cartItems} color="primary"><ShoppingCart /></Badge></div>
+                    <div className = "cartDiv2" style={{ float: "right"}}><Typography variant="h5" gutterBottom style={{ fontWeight: 'bold' }}> My Cart </Typography></div>
                   </div>
                   {/* items in cart */}
                   {this.state.cartItemsList.map(cartItem =>
@@ -235,9 +233,9 @@ class Details extends Component {
                       <CartItem item={cartItem} this={this} />
                     </div>
                   )}
-                  <div style={{ display: "inline-block", width: "100%", paddingTop: "3%" }}>
-                    <div className="totalAmountText" style={{ float: "left" }}><Typography variant="body1" gutterBottom style={{ fontWeight: 'bold' }}> TOTAL AMOUNT </Typography></div>
-                    <div className="totalAmountValue" style={{ float: "right", width: "14%", fontWeight: "bold"}}><i className="fa fa-inr" aria-hidden="true"> </i> {this.state.cartTotalPrice.toFixed(2)} </div>
+                  <div style={{ display: "flex", width: "100%", paddingTop: "3%" ,}}>
+                    <div className="totalAmountText" style={{ width: "70%", display: "flex", justifyContent: "left", alignItems: "center", paddingLeft: "5%" }}><Typography variant="body1" gutterBottom style={{ fontWeight: 'bold' }}> TOTAL AMOUNT </Typography></div>
+                    <div className="totalAmountValue" style={{ width: "30%", display: "flex", justifyContent: "center", alignItems: "center" , fontWeight: "bold"}}><i className="fa fa-inr" aria-hidden="true"> </i> {this.state.cartTotalPrice.toFixed(2)} </div>
                   </div>
                 </CardContent>
                 <CardActions>
