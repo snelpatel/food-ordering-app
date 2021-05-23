@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './Details.css';
 import Header from '../../common/header/Header';
+import * as Utils from "../../common/Utils";
+import * as Constants from "../../common/Constants";
 import '../../../src/assets/font-awesome-4.7.0/css/font-awesome.css';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -15,6 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
 import { withStyles } from '@material-ui/core/styles';
+import './Details.css';
 
 const styles = {
   card: { minWidth: 275 }
@@ -84,6 +86,15 @@ class Details extends Component {
       snackbarOpen: !this.state.snackbarOpen,
       snackbarMessage: message,
     });
+  }
+
+  //Logout action from drop down menu on profile icon
+  loginredirect = () => {
+      sessionStorage.clear();
+      this.props.history.push({
+          pathname: "/"
+      });
+      window.location.reload();
   }
 
   // Handle Checkout
@@ -175,7 +186,7 @@ class Details extends Component {
       <div>
         {/* Header */}
         <div >
-          <Header showSearch={false} />
+          <Header logoutHandler={this.loginredirect} baseUrl={this.props.baseUrl} showSearch={false} />
         </div>
         {/* Restaurant Information */}
         <div className="restaurant-information">
