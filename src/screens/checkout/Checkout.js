@@ -424,7 +424,7 @@ class Checkout extends Component {
         this.setState({ radioValue: event.target.value });
     };
 
-    //Logout action from drop down menu on profile icon
+    // Logout action from drop down menu on profile icon
     loginredirect = () => {
     sessionStorage.clear();
     this.props.history.push({
@@ -440,7 +440,7 @@ class Checkout extends Component {
         const { tabValue } = this.state;
         return (
             <div>
-                <Header />
+                <Header logoutHandler={this.loginredirect} baseUrl={this.props.baseUrl} showSearch={false} />
                 <Grid container={true} >
                     <Grid item={true} xs={9}>
                         <div>
@@ -495,7 +495,7 @@ class Checkout extends Component {
                                                                             </Typography>
                                                                             <CheckCircleIcon
                                                                                 className={classes.existingAddressCheckCircle}
-                                                                                nativecolor={this.state[address.id] === 'select-address' ? 'green' : 'grey'}
+                                                                                style={{fill: this.state[address.id] === 'select-address' ? 'green' : 'grey'}}
                                                                             />
                                                                         </GridListTile>
                                                                     ))}

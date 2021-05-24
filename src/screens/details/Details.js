@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Header from '../../common/header/Header';
-import * as Utils from "../../common/Utils";
-import * as Constants from "../../common/Constants";
 import '../../../src/assets/font-awesome-4.7.0/css/font-awesome.css';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -88,7 +86,7 @@ class Details extends Component {
     });
   }
 
-  //Logout action from drop down menu on profile icon
+  // Logout action from drop down menu on profile icon
   loginredirect = () => {
       sessionStorage.clear();
       this.props.history.push({

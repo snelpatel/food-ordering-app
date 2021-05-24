@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import Home from "../screens/home/Home";
 import Details from "../screens/details/Details"
 import Checkout from '../screens/checkout/Checkout';
+import Profile from "./profile/Profile";
 
 class Controller extends Component {
     constructor(){
@@ -22,6 +23,13 @@ class Controller extends Component {
                             <Redirect to='/' />
                         ) : (
                                 <Checkout {...props} baseUrl={this.baseUrl} history={history} />
+                            )
+                    )} />
+                    <Route path='/profile' render={({history},props) => (
+                        sessionStorage.getItem('access-token') === null ? (
+                            <Redirect to='/' />
+                        ) : (
+                                <Profile {...props} baseUrl={this.baseUrl} history={history} />
                             )
                     )} />
                 </div>

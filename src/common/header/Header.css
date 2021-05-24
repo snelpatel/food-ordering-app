@@ -7,25 +7,46 @@
     flex-wrap: wrap;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     .header-main-container {
-    background-color: #263238;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
+      background-color: #263238;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: left !important;
     }
     .menuDrop{
       margin-top: 52px !important;
     }
+    .header-logo-container, .header-search-container, .header-upload-btn-container, .header-profile-btn-container {
+      align-self: left !important;
+    }
   }
-  
+ 
+  @media screen and (max-width: 480px) {
+    .header-main-container {
+      background-color: #263238;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: left !important;
+    }
+    .menuDrop{
+      margin-top: 52px !important;
+    }
+    .header-logo-container, .header-search-container, .header-upload-btn-container, .header-profile-btn-container {
+      align-self: left !important;
+    }
+  }
+
   .menuDrop{
     margin-top: 40px;
   }
   
-  .header-logo-container, .header-search-container, .header-upload-btn-container, .header-profile-btn-container {
-    align-self: center;
+  @media screen and (min-width: 767px) {
+    .header-logo-container, .header-search-container, .header-upload-btn-container, .header-profile-btn-container {
+      align-self: center;
+    }
   }
 
   .logo {
@@ -89,8 +110,8 @@
   }
 
   .MuiInputBase-root.MuiInput-root.MuiInput-underline:after{
-    border-bottom: white !important;
-    width:8px !important;
+    border-bottom: white solid !important;
+    width: auto !important;
   }
     
   .tabs{
