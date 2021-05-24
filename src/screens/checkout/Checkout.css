@@ -1,0 +1,48 @@
+.width-25 {
+    width: 25%;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+#summary-card {
+    margin-top: 25px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    margin-left: 25px;
+}
+
+.dspNone {
+    display: none;
+}
+
+.dspBlock {
+    display: block;
+}
+#select-address {
+    border-style: solid;
+    border-color: #E0265F;
+    border-radius: 8px;
+    border-width: 1.5px;
+    box-shadow: 2px 2px #E0265F;
+}
+
+#unselect-address {
+    border-style: none;
+    box-shadow: none;
+}
+
+.width-4 {
+    width: 4%;
+}
+
+.checkout-color{
+    color:#7f7f7f;
+}
+
+.iconify { width: 24px; height: 24px; color: black }
+
+.flt-right{
+    float:right;
+}
